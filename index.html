@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>GAME</h1>
+    </header>
+
+    <main>
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="content">
+                <h2>Test your reaction speed!</h2>
+                <button id="start-btn" aria-label="Start Game">START GAME</button>
+            </div>
+        </section>
+
+        <!-- Game Screen -->
+        <section id="game-screen" class="screen">
+            <div id="hud">
+                <div class="stat">SCORE: <span id="score">0</span></div>
+                <div class="stat">TIME: <span id="timer">30</span></div>
+            </div>
+            <div id="game-field">
+                <!-- Target will be spawned here via JS -->
+            </div>
+        </section>
+
+        <!-- Game Over Screen -->
+        <section id="game-over-screen" class="screen">
+            <div class="content">
+                <h2>GAME OVER</h2>
+                <p>Your Score</p>
+                <div id="final-score">0</div>
+                <button id="restart-btn" aria-label="Play Again">PLAY AGAIN</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

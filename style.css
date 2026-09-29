@@ -1,0 +1,199 @@
+:root {
+    --bg-color: #0a0a12;
+    --surface-color: #161625;
+    --primary-color: #00f2ff;
+    --secondary-color: #7000ff;
+    --text-color: #ffffff;
+    --accent-glow: 0 0 15px rgba(0, 242, 255, 0.6);
+    --transition-speed: 0.3s;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 1rem;
+    text-align: center;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+    color: var(--primary-color);
+    text-shadow: var(--accent-glow);
+    font-weight: 800;
+}
+
+main {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.content {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Typography & Buttons */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+button {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--accent-glow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.8);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* Game HUD */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.stat {
+    background: rgba(22, 22, 37, 0.8);
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    box-shadow: var(--accent-glow);
+}
+
+/* Game Field */
+#game-field {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a12 100%);
+    cursor: crosshair;
+}
+
+/* The Target */
+.target {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: var(--accent-glow);
+    cursor: pointer;
+    animation: spawn 0.2s ease-out;
+    transition: transform 0.1s;
+}
+
+.target:active {
+    transform: scale(0.8);
+}
+
+/* Game Over Specifics */
+#final-score {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 1rem 0 2rem 0;
+    text-shadow: var(--accent-glow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spawn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    #hud {
+        font-size: 1.1rem;
+    }
+
+    .target {
+        width: 50px;
+        height: 50px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
