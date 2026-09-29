@@ -3,6 +3,12 @@
  * A reaction-speed based clicker game.
  */
 
+document.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // State variables
     let score = 0;
@@ -63,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 1000);
     }
+
+    
 
     /**
      * Handles the game over state
